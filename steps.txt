@@ -5,4 +5,7 @@
     no
     1
     php artisan serve
-4 - 
+4 - Add Require data field in User-Model
+    php artisan migrate
+
+
