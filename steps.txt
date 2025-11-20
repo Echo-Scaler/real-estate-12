@@ -1,3 +1,4 @@
+#first => Install  Breeze
 1 - composer create-project laravel/laravel lara_11_realestate
 2 - composer require laravel/breeze --dev
 3 - php artisan breeze:install
@@ -5,7 +6,16 @@
     no
     1
     php artisan serve
+#second => Create DB User
 4 - Add Require data field in User-Model
     php artisan migrate
+
+#third => Seeder and Factory
+5 - php artisan make:seeder UsersTableSeeder
+    factory => fill  require data
+    db seeder => regard random count create (10)
+    php artisan migrate
+    php artisan migrate:fresh --seed
+
 
 
