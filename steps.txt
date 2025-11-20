@@ -1,0 +1,8 @@
+1 - composer create-project laravel/laravel lara_11_realestate
+2 - composer require laravel/breeze --dev
+3 - php artisan breeze:install
+    blade
+    no
+    1
+    php artisan serve
+4 - 
