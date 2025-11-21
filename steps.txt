@@ -33,4 +33,9 @@
     Base on Role - Check in the AuthenticatedSessionController.php
     add role code for limit in App.php => add to middleware alias in bootstrap/app.php
 
-7 - 
+#five => Login With Name Email Phone
+7 - Login With Name Email Phone
+    change logic for permit (email,name,phone) in auth/login.blade.php
+    change logic basic on (user and Hash)  in LoginRequest.php
+
+
