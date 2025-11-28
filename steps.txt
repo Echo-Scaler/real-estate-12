@@ -38,4 +38,20 @@
     change logic for permit (email,name,phone) in auth/login.blade.php
     change logic basic on (user and Hash)  in LoginRequest.php
 
+#six => Admin Template setUp
+8 - Download HTML Template
+    Add (assets) under the public folder
+    Create backend folder (first) and add public and partials under the main public folder
+    {{ asset(...) }} => Laravel Blade template syntax helper function
 
+
+#seven => Dashboard Page Segmentation
+9 - separate each part of header | sidebar | footer
+    using @include
+    create new folder of body add each files of header,sidebar and footer
+
+#eight => Admin logout Option
+10 - use Auth of guard(web)
+    unvalidate session
+    redirect (login )
+    
