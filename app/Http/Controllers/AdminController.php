@@ -18,7 +18,13 @@ class AdminController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/admin/login');
         // echo 'Logout Successfully';die();
+    }
+
+    public function AdminLogin(Request $request)
+    {
+        // echo "Login Successfully";die();
+        return view('admin.admin_login');
     }
 }

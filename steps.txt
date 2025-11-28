@@ -7,9 +7,11 @@
     1
     php artisan serve
 
+
 #second => Create DB User
 4 - Add Require data field in User-Model
     php artisan migrate
+
 
 #third => Seeder and Factory
 5 - php artisan make:seeder UsersTableSeeder
@@ -17,6 +19,7 @@
     db seeder => regard random count create (10)
     php artisan migrate
     php artisan migrate:fresh --seed
+
 
 #four => admin | agent | user - multi-login system
 6 - php artisan make:controller AdminController
@@ -33,10 +36,12 @@
     Base on Role - Check in the AuthenticatedSessionController.php
     add role code for limit in App.php => add to middleware alias in bootstrap/app.php
 
+
 #five => Login With Name Email Phone
 7 - Login With Name Email Phone
     change logic for permit (email,name,phone) in auth/login.blade.php
     change logic basic on (user and Hash)  in LoginRequest.php
+
 
 #six => Admin Template setUp
 8 - Download HTML Template
@@ -50,8 +55,18 @@
     using @include
     create new folder of body add each files of header,sidebar and footer
 
+
 #eight => Admin logout Option
-10 - use Auth of guard(web)
+10 - use Auth of guard(web) => Laravel default website login/logout system
+    add route for logout
+    add link for logout in sidebar
     unvalidate session
     redirect (login )
-    
+
+
+#nine => Customize Login Form
+11 - create login route
+    logic for Adminlogin in AdminController
+    create UI for Login
+    modified suitable form for login - add error forms also
+
