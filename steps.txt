@@ -68,5 +68,7 @@
 11 - create login route
     logic for Adminlogin in AdminController
     create UI for Login
+    add photo src
     modified suitable form for login - add error forms also
 
+#ten => Refreach  Template
