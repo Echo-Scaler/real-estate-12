@@ -72,3 +72,13 @@
     modified suitable form for login - add error forms also
 
 #ten => Refreach  Template
+12 - remove unnecesary parts on sidebar and header
+
+#eleven => Admin Profile & Image Update-1
+13 - add dynamic info for user -> name , email  => In header.blade
+    copy UI from               => backend-html/main/pages/general => profile (Page-wrapper- line 381-960)
+    modified admin profile - create route-logic-UI
+    basicbackend-html/main/pages/forms/basic-element =>  <!-- Basic Form --> copy and paste in under the  <!-- middle wrapper start --> row
+    add require data items in UI
+    fix the UI layout
+

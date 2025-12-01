@@ -27,4 +27,10 @@ class AdminController extends Controller
         // echo "Login Successfully";die();
         return view('admin.admin_login');
     }
+
+    public function AdminProfile(Request $request)
+    {
+        // echo "Admin Profile";die();
+        return view('admin.admin_profile');
+    }
 }
