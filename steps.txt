@@ -82,3 +82,20 @@
     add require data items in UI
     fix the UI layout
 
+#twelve => Admin Profile & Image Update-2
+14 - Add new role in db => about - website
+    create new route for update => admin_profile/update
+    new logic in AdminController
+    after modified redirect to the admin_profile/update => with alert succsssful => Add also in the blade code
+    create error message also
+    create separete file of success message and error message (_message.blade.php)
+
+
+#thirteen => Admin Profile Login List
+
+15 - dynamic data logic change
+    add dynanmic image in header - 
+
+
+
+

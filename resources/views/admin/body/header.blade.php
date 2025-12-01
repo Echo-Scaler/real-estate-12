@@ -214,13 +214,20 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="profile">
+                    {{-- Add DB photo --}}
+                    @if (Auth::user()->photo)
+                        <img src="{{ asset('upload/admin_photo/' . Auth::user()->photo) }}" alt="Profile Image"
+                            class="img-thumbnail rounded-circle" width="10%" height="10%">
+                    @endif
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                     <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                         <div class="mb-3">
-                            <img class="wd-80 ht-80 rounded-circle" src="{{ asset('assets/images/faces/face1.jpg') }}"
-                                alt="">
+                            {{-- Add DB photo --}}
+                            @if (Auth::user()->photo)
+                                <img class="wd-80 ht-80 rounded-circle" src="{{ asset('upload/admin_photo/' . Auth::user()->photo) }}"
+                                    alt="">
+                            @endif
                         </div>
                         {{-- add user dynamic info --}}
                         <div class="text-center">
