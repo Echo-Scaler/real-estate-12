@@ -29,6 +29,13 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('admin/profile',[AdminController::class,'AdminProfile'])->name('admin.profile');
     Route::post('admin_profile/update',[AdminController::class,'AdminProfileUpdate'])->name('admin_profile_update');
     Route::get('admin/users',[AdminController::class,'AdminUsers'])->name('admin.users');
+    // for view single record
+    Route::get('admin/users/view/{id}',[AdminController::class,'AdminUsersView'])->name('admin.users.view');
+
+    // // CRUD
+    // Route::get('admin/users/edit/{id}',[AdminController::class,'AdminUsersEdit'])->name('admin.users.edit');
+    // Route::post('admin/users/update/{id}',[AdminController::class,'AdminUsersUpdate'])->name('admin.users.update');
+    // Route::get('admin/users/delete/{id}',[AdminController::class,'AdminUsersDelete'])->name('admin.users.delete');
 });
 
 //Agent

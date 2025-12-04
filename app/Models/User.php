@@ -52,7 +52,7 @@ class User extends Authenticatable
         ];
     }
 
-    // get record from users table
+    // get record from users table => View All Users
     static public function getRecord()
     {
         return self::select('users.*')
@@ -60,6 +60,12 @@ class User extends Authenticatable
             -> paginate(10);
             // $return = $return->paginate(10);
             // return $return;
+    }
+
+    // get single record from users table => View User
+    static public function single_record($id)
+    {
+        return self::find($id);
     }
 
 

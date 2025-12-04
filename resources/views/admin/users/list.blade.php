@@ -30,7 +30,7 @@
                                         <th>Role</th>
                                         <th>Status</th>
                                         <th>Created at</th>
-                                        {{-- <th>Action</th> --}}
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,6 +70,25 @@
                                                 @endif
                                             </td>
                                             <td>{{ $value->created_at }}</td>
+                                            {{-- <td>
+                                                <a href="{{ url('admin/users/edit/' . $value->id) }}"
+                                                    class="btn btn-primary">Edit</a>
+                                                <a href="{{ url('admin/users/delete/' . $value->id) }}"
+                                                    onclick="return confirm('Are you sure you want to delete this user?')"
+                                                    class="btn btn-danger">Delete</a>
+                                            </td> --}}
+                                            <td>
+                                                <a class="dropdown-item d-flex align-items-center" href="{{ url('admin/users/view/' . $value->id) }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-eye icon-sm me-2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                    </svg>
+                                                    <span class="">View</span></a>
+
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -78,9 +97,9 @@
                         </div>
 
                     </div>
-                   <div  style="padding: 10px; float:right;">
-                    {{ $getRecord->links() }}
-                   </div>
+                    <div style="padding: 10px; float:right;">
+                        {{ $getRecord->links() }}
+                    </div>
                 </div>
             </div>
         </div>

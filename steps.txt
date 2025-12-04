@@ -102,13 +102,16 @@
     create route - controller - UI in under the admin folder
     copy table in the backend/pages/tables/basic-table.html
     create list.blade under the AdminController
-    
+
     static logic in User Model
     call that model to controller
     check badge color by role and status
     add pagination link in list.blade file and AppServiceProvider.php => import pagination and logic of bootstrap
 
+#fifteen => user details list
 
-
-
-
+17  - create single route
+    - model logic for single - call to use in controller
+    - view file for single create
+    - detail template copy from - general/form.html
+    - layout change
