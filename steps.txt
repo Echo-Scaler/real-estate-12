@@ -92,9 +92,22 @@
 
 
 #thirteen => Admin Profile Login List
-
 15 - dynamic data logic change
-    add dynanmic image in header - 
+    add dynanmic image in header -
+    validate logic in the AdminController
+
+
+#fourteen => Users List (Admin, Agent, User) and Paginate UI set
+16 - create new sidebar for role - In sidebar.blade.php
+    create route - controller - UI in under the admin folder
+    copy table in the backend/pages/tables/basic-table.html
+    create list.blade under the AdminController
+    
+    static logic in User Model
+    call that model to controller
+    check badge color by role and status
+    add pagination link in list.blade file and AppServiceProvider.php => import pagination and logic of bootstrap
+
 
 
 

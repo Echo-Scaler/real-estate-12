@@ -4,6 +4,7 @@
 
         {{-- Add Success Message Alert --}}
         @include('_message')
+
         {{-- timeline delete --}}
         {{-- <div class="row">
             <div class="col-12 grid-margin">
@@ -108,7 +109,7 @@
                         </div>
                         <div class="mt-3">
                             <label class="tx-11 fw-bolder mb-0 text-uppercase">Email:</label>
-                            <p class="text-muted">me@nobleui.com</p>
+                            <p class="text-muted">{{ Auth::user()->email }}</p>
                         </div>
                         <div class="mt-3">
                             <label class="tx-11 fw-bolder mb-0 text-uppercase">Website:</label>
@@ -162,7 +163,7 @@
                                         <label class="form-label">Email address</label>
                                         <input type="email" class="form-control" placeholder="Email" name="email"
                                             value="{{ $adminProfile->email }}" />
-                                        <span style="color: red;">{{ $errors->first('email') }}</span>
+                                        {{-- <span style="color: red;">{{ $errors->first('email') }}</span> --}}
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
@@ -171,7 +172,7 @@
                                         <span class="text-muted">⁂ Leave it blank if you don't want to change the
                                             password</span>
                                         <br>
-                                        <span style="color: red;">{{ $errors->first('password') }}</span>
+                                        {{-- <span style="color: red;">{{ $errors->first('password') }}</span> --}}
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Phone</label>

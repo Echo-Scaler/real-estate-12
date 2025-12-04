@@ -28,6 +28,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('admin/logout',[AdminController::class,'AdminLogout'])->name('admin.logout');
     Route::get('admin/profile',[AdminController::class,'AdminProfile'])->name('admin.profile');
     Route::post('admin_profile/update',[AdminController::class,'AdminProfileUpdate'])->name('admin_profile_update');
+    Route::get('admin/users',[AdminController::class,'AdminUsers'])->name('admin.users');
 });
 
 //Agent

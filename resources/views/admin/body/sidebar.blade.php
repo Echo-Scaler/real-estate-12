@@ -20,6 +20,17 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
+
+            {{-- Add Role side bar  --}}
+            <li class="nav-item nav-category">Role</li>
+            <li class="nav-item">
+                {{-- add dashboard route --}}
+                <a href="{{ url('admin/users') }}" class="nav-link">
+                    <i class="link-icon" data-feather="user"></i>
+                    <span class="link-title">Users</span>
+                </a>
+            </li>
+
             <li class="nav-item nav-category">web apps</li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
@@ -99,4 +110,3 @@
         </ul>
     </div>
 </nav>
-
