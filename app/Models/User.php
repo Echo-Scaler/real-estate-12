@@ -56,7 +56,7 @@ class User extends Authenticatable
     static public function getRecord()
     {
         return self::select('users.*')
-            ->orderBy('id', 'asc')
+            -> orderBy('id', 'asc')
             -> paginate(10);
             // $return = $return->paginate(10);
             // return $return;

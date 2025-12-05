@@ -109,9 +109,15 @@
     add pagination link in list.blade file and AppServiceProvider.php => import pagination and logic of bootstrap
 
 #fifteen => user details list
-
 17  - create single route
     - model logic for single - call to use in controller
     - view file for single create
     - detail template copy from - general/form.html
     - layout change
+
+
+#sixteen => Bar Chart Display Number User Registeration In laravel
+18 - AdminController - fix | index.blade -> yield (js file of Dashboard)
+   -  Change Id name in js file and div => id name
+   - query logic in admindashboard Controller - insert to change name , data in JS code
+

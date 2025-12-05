@@ -14,8 +14,15 @@ class AdminController extends Controller
 {
     public function AdminDashboard(Request $request)
     {
-        return view('admin.index');
-        // die();
+        // echo "Admin Dashboard";die();
+        $user = User::selectRaw('count(id) as count, DATE_FORMAT(created_at, "%Y-%m-%d") as month')
+            ->groupBy('month')
+            ->orderBy('month', 'asc')
+            ->get();
+        $data['months'] = $user->pluck('month');
+        $data['counts'] = $user->pluck('count');
+        return view('admin.index',$data);
+        // bar char montly users
     }
 
     public function AdminLogout(Request $request)
