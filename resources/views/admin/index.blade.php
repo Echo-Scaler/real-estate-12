@@ -258,7 +258,7 @@
                         </div>
                         {{-- <p class="text-muted">Sales are activities related to selling or the number of goods or
                             services sold in a given time period.</p> --}}
-                        <div id="monthlyUsersChart"></div>
+                        <div id="monthlyUsersChart" ></div>
                     </div>
                 </div>
             </div>

@@ -118,6 +118,15 @@
 
 #sixteen => Bar Chart Display Number User Registeration In laravel
 18 - AdminController - fix | index.blade -> yield (js file of Dashboard)
-   -  Change Id name in js file and div => id name
+   - Change Id name in js file and div => id name
    - query logic in admindashboard Controller - insert to change name , data in JS code
 
+
+#eighteen => Compose Email Send
+19 - sidebar.blade =>change - compose
+   - new route create => EmailController - new file in Controller
+   - change email -> dynamic
+   - create form and regard name for DB under the title of New Message
+   - build up db for "compose_email" add require data column
+   - create new model for compose_email
+   - logic in EmailController (create new obj)=> with alert messages

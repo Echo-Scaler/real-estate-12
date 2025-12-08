@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Mime\Email;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,10 +30,14 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('admin/logout',[AdminController::class,'AdminLogout'])->name('admin.logout');
     Route::get('admin/profile',[AdminController::class,'AdminProfile'])->name('admin.profile');
     Route::post('admin_profile/update',[AdminController::class,'AdminProfileUpdate'])->name('admin_profile_update');
+    //users show table
     Route::get('admin/users',[AdminController::class,'AdminUsers'])->name('admin.users');
     // for view single record
     Route::get('admin/users/view/{id}',[AdminController::class,'AdminUsersView'])->name('admin.users.view');
 
+    //Email Controller
+    Route::get('admin/email/compose',[EmailController::class,'EmailCompose'])->name('admin.email.compose');
+    Route::post('admin/email/compose_post',[EmailController::class,'EmailComposePost'])->name('admin.email.compose_post');
     // // CRUD
     // Route::get('admin/users/edit/{id}',[AdminController::class,'AdminUsersEdit'])->name('admin.users.edit');
     // Route::post('admin/users/update/{id}',[AdminController::class,'AdminUsersUpdate'])->name('admin.users.update');
