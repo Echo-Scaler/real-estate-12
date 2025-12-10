@@ -126,7 +126,14 @@
 19 - sidebar.blade =>change - compose
    - new route create => EmailController - new file in Controller
    - change email -> dynamic
-   - create form and regard name for DB under the title of New Message
+   - create form and regard name for DB(column) under the title of New Message
    - build up db for "compose_email" add require data column
    - create new model for compose_email
    - logic in EmailController (create new obj)=> with alert messages
+
+#nighteen => Compose Email Send in Mailtrap
+20 - Add mail import
+   - create query in Email Controller for Mailtrap
+   - create Mail folder under the app -> create file of compose_email_mail.
+   - go to mailtrap - use require data for .env file mail
+   - check and test
