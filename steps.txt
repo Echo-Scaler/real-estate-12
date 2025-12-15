@@ -132,8 +132,21 @@
    - logic in EmailController (create new obj)=> with alert messages
 
 #nighteen => Compose Email Send in Mailtrap
-20 - Add mail import
-   - create query in Email Controller for Mailtrap
+20 - Add mail import |  create query in Email Controller for Mailtrap
    - create Mail folder under the app -> create file of compose_email_mail.
    - go to mailtrap - use require data for .env file mail
+   - create view file for compose_email_mail. under app/email
    - check and test
+
+
+
+#twently => Send Mail List
+21 - add new menu for sent(list) in sidebar
+   - create new route for sent
+   - create new controller for sent(list) in EmailController
+   - create new view for sent(list) admin/email/sent
+   - add require data in sent.blade.php
+   - add require data in sent controller (call model )
+   - add require data in sent model
+   - check and test
+

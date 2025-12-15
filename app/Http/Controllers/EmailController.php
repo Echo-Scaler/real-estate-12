@@ -26,8 +26,7 @@ class EmailController extends Controller
     public function EmailComposePost(Request $request)
     {
         // dd($request->all());
-
-        $save = new ComposeEmailModel();
+        $save = new ComposeEmailModel;
 
         $save->user_id = $request->user_id;
         $save->cc_email =trim($request->cc_email);
@@ -38,11 +37,18 @@ class EmailController extends Controller
 
         //email start send - mail facade used
         // user id = $request->user_id နဲ့ ကိုယ့် email ကို ရှာပြီး $getUserEmail ထဲသိမ်း
-        
+
         $getUserEmail = User::where('id','=',$request->user_id)->first();
         Mail::to($getUserEmail->email)->cc($request->cc_email)->send(new ComposeEmailMail($save));
         //email end send
 
-        return redirect()->back()->with('success', 'Email Compose Successfully');
+        return redirect('admin/email/compose')->with('success', 'Email Compose Successfully');
+    }
+
+    public function SentComposePost(Request $request)
+    {
+        // echo "hhh";die();
+        $data['getEmail'] = ComposeEmailModel::all()->sortByDesc('id');
+        return view('admin.email.sent', $data)->with('success', 'Email Compose Successfully');
     }
 }

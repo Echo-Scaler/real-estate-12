@@ -38,6 +38,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     //Email Controller
     Route::get('admin/email/compose',[EmailController::class,'EmailCompose'])->name('admin.email.compose');
     Route::post('admin/email/compose_post',[EmailController::class,'EmailComposePost'])->name('admin.email.compose_post');
+    Route::get('admin/email/sent',[EmailController::class,'SentComposePost'])->name('admin.email.sent');
     // // CRUD
     // Route::get('admin/users/edit/{id}',[AdminController::class,'AdminUsersEdit'])->name('admin.users.edit');
     // Route::post('admin/users/update/{id}',[AdminController::class,'AdminUsersUpdate'])->name('admin.users.update');
