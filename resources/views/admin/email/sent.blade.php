@@ -1,7 +1,7 @@
 @extends('admin.admin_dashboard')
 @section('admin')
     <div class="page-content">
-
+        @include('_message')
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -114,14 +114,17 @@
                                         <a class="dropdown-item" href="#">Mark as read</a>
                                         <a class="dropdown-item" href="#">Mark as unread</a><a
                                             class="dropdown-item" href="#">Spam</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-danger"
-                                            href="#">Delete</a>
+                                        <a href=""
+                                            onclick="return confirm('Are you sure you want to delete this item?')"
+                                            id="getDeleteURL" class="dropdown-item">Delete</a>
                                     </div>
                                 </div>
                                 <div class="btn-group me-2">
                                     <button class="btn btn-outline-primary" type="button">Archive</button>
                                     <button class="btn btn-outline-primary" type="button">Span</button>
-                                    <button class="btn btn-outline-primary" type="button">Delete</button>
+                                    <a href=""
+                                        onclick="return confirm('Are you sure you want to delete this item?')"
+                                        class="btn btn-outline-primary" id="getDeleteURL">Delete</a>
                                 </div>
                                 <div class="btn-group me-2 d-none d-xl-block">
                                     <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
@@ -135,15 +138,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                                <span class="me-2">1-10 of 253</span>
-                                <div class="btn-group">
-                                    <button class="btn btn-outline-secondary btn-icon" type="button"><i
-                                            data-feather="chevron-left"></i></button>
-                                    <button class="btn btn-outline-secondary btn-icon" type="button"><i
-                                            data-feather="chevron-right"></i></button>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="email-list">
                             @foreach ($getEmail as $item)
@@ -151,7 +146,9 @@
                                 <div class="email-list-item email-list-item--unread">
                                     <div class="email-list-actions">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input">
+                                            {{-- to check box delete add value and js code of (delete-all-option) --}}
+                                            <input type="checkbox" class="form-check-input delete-all-option"
+                                                value="{{ $item->id }}">
                                         </div>
                                         <a class="favorite" href="javascript:;"><span><i
                                                     data-feather="star"></i></span></a>
@@ -162,8 +159,7 @@
                                             <p class="msg">{{ $item->descriptions }}</p>
                                         </div>
                                         <span class="date">
-                                        {{ $item->created_at->translatedFormat('d F Y') }}
-
+                                            {{ $item->created_at->translatedFormat('d F Y') }}
 
                                         </span>
                                     </a>
@@ -171,17 +167,42 @@
                             @endforeach
 
                         </div>
+                        <div class="mt-3 d-flex justify-content-end">
+                            {{ $getEmail->links() }}
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    <!-- core:js -->
-	<script src="../../../assets/vendors/core/core.js"></script>
-	<!-- endinject -->
-    <!-- inject:js -->
-	<script src="../../../assets/vendors/feather-icons/feather.min.js"></script>
-	<script src="../../../assets/js/template.js"></script>
-	<!-- endinject -->
 @endsection
+
+@section('script')
+    <script type="text/javascript">
+        $('.delete-all-option').change(function() {
+            var total = '';
+            $('.delete-all-option').each(function() {
+                if (this.checked) {
+                    var id = $(this).val();
+                    total += id + ',';
+                }
+            });
+            var url = '{{ url('admin/email_sent?id=') }}' + total;
+            $('#getDeleteURL').attr('href', url);
+
+        });
+    </script>
+@endsection
+
+
+
+
+// {{--
+// $('.delete-all-option').on('click', function () {
+//     if ($(this).is(':checked')) {
+//         $(this).closest('.email-list-item').addClass('selected');
+//     } else {
+//         $(this).closest('.email-list-item').removeClass('selected');
+//     }
+// }); --}}

@@ -139,8 +139,7 @@
    - check and test
 
 
-
-#twently => Send Mail List
+#twenty => Send Mail List
 21 - add new menu for sent(list) in sidebar
    - create new route for sent
    - create new controller for sent(list) in EmailController
@@ -150,3 +149,10 @@
    - add require data in sent model
    - check and test
 
+#twentyone => Delete Email sent
+22 - add delete option in sent.blade.php (js code in footer)
+   - create new route for delete
+   - create new controller for delete in EmailController
+   - add require data in sent controller (call model )
+   - add require data in sent model
+   - check and test

@@ -48,7 +48,26 @@ class EmailController extends Controller
     public function SentComposePost(Request $request)
     {
         // echo "hhh";die();
-        $data['getEmail'] = ComposeEmailModel::all()->sortByDesc('id');
+        $data['getEmail'] = ComposeEmailModel::orderByDesc('id')->paginate(10);
         return view('admin.email.sent', $data)->with('success', 'Email Compose Successfully');
+    }
+
+    // Email Sent Delete
+    public function EmailSentDelete(Request $request)
+    {
+        // echo $id;die();
+        if(!empty($request->id))
+        {
+            $option = explode(',',$request->id);
+            foreach($option as $id)
+            {
+                if(!empty($id))
+                {
+                    $getRecord = ComposeEmailModel::find($id);
+                    $getRecord->delete();
+                }
+            }
+        }
+        return redirect()->back()->with('success', 'Email Sent Delete Successfully');
     }
 }
