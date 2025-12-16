@@ -70,4 +70,21 @@ class EmailController extends Controller
         }
         return redirect()->back()->with('success', 'Email Sent Delete Successfully');
     }
+
+    // details email read
+    public function EmailSentRead($id, Request $request)
+    {
+        // echo $id; die();
+        $data['getRecord'] = ComposeEmailModel::where('id','=',$id)->first();
+        return view('admin.email.read', $data);
+    }
+
+    // Email Read Delete
+    public function admin_email_read_delete($id, Request $request)
+    {
+        // // echo $id; die();
+        $deleteRecord = ComposeEmailModel::find($id);
+        $deleteRecord->delete();
+        return redirect('admin/email/sent')->with('success', 'Email Read Delete Successfully');
+    }
 }

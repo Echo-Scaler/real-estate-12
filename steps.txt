@@ -156,3 +156,8 @@
    - add require data in sent controller (call model )
    - add require data in sent model
    - check and test
+
+#twentytwo => Read Business Mail and Delete
+23 - create in the sent.blade => details email
+   - create route for detail email read - controller
+   - create UI for details email read

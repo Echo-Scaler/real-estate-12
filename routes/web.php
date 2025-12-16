@@ -40,6 +40,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('admin/email/compose_post',[EmailController::class,'EmailComposePost'])->name('admin.email.compose_post');
     Route::get('admin/email/sent',[EmailController::class,'SentComposePost'])->name('admin.email.sent');
     Route::get('admin/email_sent',[EmailController::class,'EmailSentDelete'])->name('admin.email_sent.delete');
+    Route::get('admin/email_sent/read/{id}',[EmailController::class,'EmailSentRead'])->name('admin.email_sent.read');
+    Route::get('admin/email/read_delete/{id}',[EmailController::class,'admin_email_read_delete'])->name('admin.email.read_delete');
+
     // // CRUD
     // Route::get('admin/users/edit/{id}',[AdminController::class,'AdminUsersEdit'])->name('admin.users.edit');
     // Route::post('admin/users/update/{id}',[AdminController::class,'AdminUsersUpdate'])->name('admin.users.update');

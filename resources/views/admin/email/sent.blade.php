@@ -114,17 +114,17 @@
                                         <a class="dropdown-item" href="#">Mark as read</a>
                                         <a class="dropdown-item" href="#">Mark as unread</a><a
                                             class="dropdown-item" href="#">Spam</a>
-                                        <a href=""
+                                        {{-- <a href="{{ url('admin/email_sent/delete_all') }}"
                                             onclick="return confirm('Are you sure you want to delete this item?')"
-                                            id="getDeleteURL" class="dropdown-item">Delete</a>
+                                            id="getDeleteURL" class="dropdown-item">Delete</a> --}}
                                     </div>
                                 </div>
                                 <div class="btn-group me-2">
                                     <button class="btn btn-outline-primary" type="button">Archive</button>
                                     <button class="btn btn-outline-primary" type="button">Span</button>
-                                    <a href=""
-                                        onclick="return confirm('Are you sure you want to delete this item?')"
-                                        class="btn btn-outline-primary" id="getDeleteURL">Delete</a>
+                                    <a href="{{ url('admin/email_sent/delete_all') }}"
+                                            onclick="return confirm('Are you sure you want to delete this item?')"
+                                            id="getDeleteURL"  class="btn btn-outline-primary"  class="dropdown-item">Delete</a>
                                 </div>
                                 <div class="btn-group me-2 d-none d-xl-block">
                                     <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
@@ -153,7 +153,8 @@
                                         <a class="favorite" href="javascript:;"><span><i
                                                     data-feather="star"></i></span></a>
                                     </div>
-                                    <a href="" class="email-list-detail">
+                                    {{-- to show subject and description of email --}}
+                                    <a href="{{ url('admin/email_sent/read/' . $item->id) }}" class="email-list-detail">
                                         <div class="content">
                                             <span class="from">{{ $item->subject }}</span>
                                             <p class="msg">{{ $item->descriptions }}</p>
