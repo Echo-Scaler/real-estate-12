@@ -172,3 +172,7 @@
    - chekck ths URL (@if(request()->segment(3) == 'inbox') active @endif)
     https://example.com// -  user/message/inbox
 
+#twentlyfour => Search Form with HTML
+25 - user/list.blade => create form of search
+   - add input field and button
+   - add create user button

@@ -8,6 +8,64 @@
                 <li class="breadcrumb-item active" aria-current="page">Users List</li>
             </ol>
         </nav>
+        <br>
+        <div class="row">
+            <div class="col-lg-12 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Search Users</h6>
+                        <form class="form-inline" method="GET" action="{{ url('admin/users/list') }}">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label for="search" class="sr-only">ID</label>
+                                    <input type="text" class="form-control bg-transparent border-primary" name="id"
+                                        placeholder="Search by ID">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="search" class="sr-only">Username</label>
+                                    <input type="text" class="form-control bg-transparent border-primary" name="name"
+                                        placeholder="Search by name">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="search" class="sr-only">Email</label>
+                                    <input type="text" class="form-control bg-transparent border-primary" name="email"
+                                        placeholder="Search by email">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="search" class="sr-only">Status</label>
+                                    <select class="form-control bg-transparent border-primary" name="status">
+                                        <option class="text-dark" value="">Select Status</option>
+                                        <option class="text-dark" value="active">Active</option>
+                                        <option class="text-dark" value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="search" class="sr-only">Website</label>
+                                    <input type="text" class="form-control bg-transparent border-primary" name="website"
+                                        placeholder="Search by website">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="role" class="sr-only ">Role</label>
+                                    <select class="form-control bg-transparent border-primary" name="role">
+                                        <option class="text-dark" value="">Select Role</option>
+                                        <option class="text-dark" value="admin">Admin</option>
+                                        <option class="text-dark" value="user">User</option>
+                                        <option class="text-dark" value="agent">Agent</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="d-flex justify-content-center gap-2 border-primary">
+                                <button class="btn btn-primary " type="submit">Search</button>
+                                <a href="{{ url('admin/users') }}" class="btn btn-secondary">Reset</a>
+                                <a href="{{ url('admin/users/add') }}" class="btn btn-success">Add User</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-lg-12 stretch-card">
                 <div class="card">
@@ -78,7 +136,8 @@
                                                     class="btn btn-danger">Delete</a>
                                             </td> --}}
                                             <td>
-                                                <a class="dropdown-item d-flex align-items-center" href="{{ url('admin/users/view/' . $value->id) }}">
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                    href="{{ url('admin/users/view/' . $value->id) }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
