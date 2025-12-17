@@ -158,6 +158,17 @@
    - check and test
 
 #twentytwo => Read Business Mail and Delete
-23 - create in the sent.blade => details email
+23 - create in the sent.blade => details email link
    - create route for detail email read - controller
-   - create UI for details email read
+   - create UI for details email read.blade below admin/email
+   - create to delete for single email data
+
+#twentythree => Includ sub-view in blade
+24 - remove some code change to the new created _sidebar.blade.php below the admin/email
+   -  add @include ('admin.email._sidebar')
+   - remove also in compose.blade and send.blade => do same process above
+   - delete inbox and read from sidebar menu
+   - add compose-menu,sent mail  url link in the _sidebar.blade
+   - chekck ths URL (@if(request()->segment(3) == 'inbox') active @endif)
+    https://example.com// -  user/message/inbox
+
