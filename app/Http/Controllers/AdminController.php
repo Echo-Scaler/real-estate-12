@@ -87,7 +87,9 @@ class AdminController extends Controller
     // Admin Users
     public function AdminUsers(Request $request)
     {
-        $data['getRecord'] = User::getRecord();
+        // $data['getRecord'] = User::getRecord(); => first list conditions
+        $data['getRecord'] = User::getRecord($request);  //search form conditions
+        $data['request'] = $request;
         // return view('admin.users', $data);
         return view('admin.users.list', $data);
 
@@ -100,4 +102,10 @@ class AdminController extends Controller
         $data['getRecord'] = User::single_record($id);
         return view('admin.users.view', $data);
     }
+
+    // public function AdminUsersAdd(Request $request)
+    // {
+    //     // echo "Admin Users Add";die();
+    //     return view('admin.users.add');
+    // }
 }

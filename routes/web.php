@@ -30,12 +30,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('admin/logout',[AdminController::class,'AdminLogout'])->name('admin.logout');
     Route::get('admin/profile',[AdminController::class,'AdminProfile'])->name('admin.profile');
     Route::post('admin_profile/update',[AdminController::class,'AdminProfileUpdate'])->name('admin_profile_update');
+
+    
     //users show table
     Route::get('admin/users',[AdminController::class,'AdminUsers'])->name('admin.users');
+    Route::get('admin/users/view/{id}',[AdminController::class,'AdminUsersView'])->name('admin.users.view');
     // Route::get('admin/users/list',[AdminController::class,'AdminUsersList'])->name('admin.users.list');
     // Route::post('admin/users/list',[AdminController::class,'AdminUsersListPost'])->name('admin.users.list.post');
     // for view single record
-    Route::get('admin/users/view/{id}',[AdminController::class,'AdminUsersView'])->name('admin.users.view');
+
+
 
     //Email Controller
     Route::get('admin/email/compose',[EmailController::class,'EmailCompose'])->name('admin.email.compose');

@@ -14,26 +14,27 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Search Users</h6>
-                        <form class="form-inline" method="GET" action="{{ url('admin/users/list') }}">
+
+                        <form class="form-inline" method="GET" action="">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">ID</label>
-                                    <input type="text" class="form-control bg-transparent border-primary" name="id"
-                                        placeholder="Search by ID">
+                                    <input type="text" class="form-control bg-transparent border-primary"  name="id"
+                                        placeholder="Search by ID" value="{{ $request->id }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Username</label>
-                                    <input type="text" class="form-control bg-transparent border-primary" name="name"
-                                        placeholder="Search by name">
+                                    <input type="text" class="form-control bg-transparent border-primary"  name="name"
+                                        placeholder="Search by name" value="{{ $request->name }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Email</label>
-                                    <input type="text" class="form-control bg-transparent border-primary" name="email"
-                                        placeholder="Search by email">
+                                    <input type="text" class="form-control bg-transparent border-primary"  name="email"
+                                        placeholder="Search by email" value="{{ $request->email }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Status</label>
-                                    <select class="form-control bg-transparent border-primary" name="status">
+                                    <select class="form-control bg-transparent border-primary"  name="status" value="{{ $request->status }}">
                                         <option class="text-dark" value="">Select Status</option>
                                         <option class="text-dark" value="active">Active</option>
                                         <option class="text-dark" value="inactive">Inactive</option>
@@ -41,12 +42,12 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Website</label>
-                                    <input type="text" class="form-control bg-transparent border-primary" name="website"
-                                        placeholder="Search by website">
+                                    <input type="text" class="form-control bg-transparent border-primary"  name="website"
+                                        placeholder="Search by website" value="{{ $request->website }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="role" class="sr-only ">Role</label>
-                                    <select class="form-control bg-transparent border-primary" name="role">
+                                    <select class="form-control bg-transparent border-primary"  name="role" value="{{ $request->role }}">
                                         <option class="text-dark" value="">Select Role</option>
                                         <option class="text-dark" value="admin">Admin</option>
                                         <option class="text-dark" value="user">User</option>
@@ -58,7 +59,7 @@
                             <div class="d-flex justify-content-center gap-2 border-primary">
                                 <button class="btn btn-primary " type="submit">Search</button>
                                 <a href="{{ url('admin/users') }}" class="btn btn-secondary">Reset</a>
-                                <a href="{{ url('admin/users/add') }}" class="btn btn-success">Add User</a>
+                                {{-- <a href="{{ url('admin/users/add') }}" class="btn btn-success">Add User</a> --}}
                             </div>
                         </form>
                     </div>
@@ -92,7 +93,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($getRecord as $value)
+                                    {{-- change foreach loop to forelse loop for search error message for search functions --}}
+                                    @forelse ($getRecord as $value)
                                         <tr class="table-info text-dark">
                                             <td>{{ $value->id }}</td>
                                             <td>{{ $value->name }}</td>
@@ -149,7 +151,13 @@
 
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        {{-- check if no records found --}}
+                                        @empty
+                                        <tr>
+                                            <td colspan="100%" class="text-center bg-danger text-white fs-5">No records found</td>
+                                        </tr>
+                                        @endforelse
+                            {{-- change for each foresle loop for search error message --}}
                                 </tbody>
                             </table>
 

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Request;
 
 class User extends Authenticatable
 {
@@ -53,13 +54,38 @@ class User extends Authenticatable
     }
 
     // get record from users table => View All Users
-    static public function getRecord()
+    // static public function getRecord()
+
+    //filter by role and status => View All Users
+    static public function getRecord($request)
     {
-        return self::select('users.*')
-            -> orderBy('id', 'asc')
-            -> paginate(10);
-            // $return = $return->paginate(10);
-            // return $return;
+        $return = self::select('users.*');
+
+        //Search start
+        if (!empty($request->get('id'))) {
+            $return = $return->where('id', '=', $request->get('id'));
+        }
+        if (!empty($request->get('name'))) {
+            $return = $return->where('name', 'like', '%' . $request->get('name') . '%');
+        }
+        if (!empty($request->get('email'))) {
+            $return = $return->where('email', 'like', '%' . $request->get('email') . '%');
+        }
+        if (!empty($request->get('website'))) {
+            $return = $return->where('website', 'like', '%' . $request->get('website') . '%');
+        }
+        if (!empty($request->get('status'))) {
+            $return = $return->where('status', '=', $request->get('status'));
+        }
+        if (!empty($request->get('role'))) {
+            $return = $return->where('role', '=', $request->get('role'));
+        }
+        //Search end
+
+        $return = $return->orderBy('id', 'asc')
+            ->paginate(10);
+
+        return $return;
     }
 
     // get single record from users table => View User

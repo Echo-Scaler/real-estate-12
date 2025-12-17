@@ -9,7 +9,7 @@
             </ol>
         </nav>
 
-        <div class="col-md-6 grid-margin stretch-card">
+        <div class="col-md-6 m-auto grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">View User Form</h6>
