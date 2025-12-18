@@ -109,4 +109,51 @@ class AdminController extends Controller
         // echo "Admin Users Add";die();
         return view('admin.users.add');
     }
+
+    public function AdminUsersAddStore(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:255',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'role' => 'required|in:admin,user,agent',
+            'status' => 'required|in:active,inactive',
+            'address' => 'required|string|max:255',
+            'about' => 'required|string',
+            'website' => 'required|string|max:255',
+        ]);
+
+
+        $user = new User();
+        $user->name = trim($request->name);
+        $user->username = trim($request->username);
+        $user->email = trim($request->email);
+        $user->phone = trim($request->phone);
+        // $user->password = Hash::make($request->password);
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photoName = SupportStr::random(30) . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('upload/admin_photo'), $photoName);
+            $user->photo = $photoName;
+        }
+        $user->role = trim($request->role);
+        $user->status = trim($request->status);
+        $user->address = trim($request->address);
+        $user->about   = trim($request->about);
+        $user->website = $request->website;
+        // dd($user);
+        $user->save();
+        return redirect('admin/users')->with('success', 'Add Admin Users Successfully. . .');
+    }
+
+    // Admin Users Edit
+    public function AdminUsersEdit(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user'));
+    }
+
 }

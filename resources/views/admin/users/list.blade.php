@@ -1,6 +1,7 @@
 @extends('admin.admin_dashboard')
 @section('admin')
     <div class="page-content">
+        @include('_message')
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Users</a></li>
@@ -95,6 +96,7 @@
                                         <th>Photo</th>
                                         <th>Phone</th>
                                         <th>Website</th>
+                                        <th>About</th>
                                         <th>Address</th>
                                         <th>Role</th>
                                         <th>Status</th>
@@ -118,7 +120,8 @@
                                             </td>
                                             <td>{{ $value->phone }}</td>
                                             <td>{{ $value->website }}</td>
-                                            <td>{{ $value->address }}</td>
+                                            <td>{{ Str::words($value->about, 10) }}</td>
+                                            <td>{{ Str::words($value->address, 50) }}</td>
                                             {{-- <td>{{ $value->role }}</td> --}}
                                             {{-- check badge color of role --}}
                                             <td>
@@ -140,13 +143,13 @@
                                                 @endif
                                             </td>
                                             <td>{{ $value->created_at }}</td>
-                                            {{-- <td>
+                                            <td>
                                                 <a href="{{ url('admin/users/edit/' . $value->id) }}"
                                                     class="btn btn-primary">Edit</a>
                                                 <a href="{{ url('admin/users/delete/' . $value->id) }}"
                                                     onclick="return confirm('Are you sure you want to delete this user?')"
                                                     class="btn btn-danger">Delete</a>
-                                            </td> --}}
+                                            </td>
                                             <td>
                                                 <a class="dropdown-item d-flex align-items-center"
                                                     href="{{ url('admin/users/view/' . $value->id) }}">

@@ -192,4 +192,9 @@
    - create file for add.blade in =>  users
    - copy pages of horizontal section
 
+#twentyseven => Adding roles to a user store data in Database
+27 - create route for store user
+   - logic in controller -> check data validate (dd ($) | echo "" ;die();)
+   
+
 

@@ -94,6 +94,30 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="exampleInputUsername1" class="col-sm-3 col-form-label "><strong>Address</strong>
+                            </label>
+                            <div class="col-sm-9">
+                                <strong> {{ $getRecord->address }}</strong>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="exampleInputUsername1" class="col-sm-3 col-form-label "><strong>About</strong>
+                            </label>
+                            <div class="col-sm-9">
+                                <strong> {{ $getRecord->about }}</strong>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="exampleInputUsername1" class="col-sm-3 col-form-label "><strong>Website</strong>
+                            </label>
+                            <div class="col-sm-9">
+                                <strong> {{ $getRecord->website }}</strong>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="exampleInputUsername1" class="col-sm-3 col-form-label "><strong>Created At</strong>
                             </label>
                             <div class="col-sm-9">
