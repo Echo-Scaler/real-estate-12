@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash as Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str as SupportStr;
-use Str;
-
+use App\Mail\RegisteredMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -144,16 +145,23 @@ class AdminController extends Controller
         $user->address = trim($request->address);
         $user->about   = trim($request->about);
         $user->website = $request->website;
+
+        $user->remember_token = Str::random(50);
         // dd($user);
         $user->save();
+
+       Mail::to($user->email)->send(new RegisteredMail($user));
+
+
+
         return redirect('admin/users')->with('success', 'Add Admin Users Successfully. . .');
     }
 
     // Admin Users Edit
-    public function AdminUsersEdit(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-        return view('admin.users.edit', compact('user'));
-    }
+    // public function AdminUsersEdit(Request $request, $id)
+    // {
+    //     $user = User::findOrFail($id);
+    //     return view('admin.users.edit', compact('user'));
+    // }
 
 }

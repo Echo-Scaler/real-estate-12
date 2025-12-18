@@ -178,7 +178,7 @@
    - add create user button
 
 #twentyfive => Search and Filter Form with HTML 2
-25 - add new logic in AdminController
+26 - add new logic in AdminController
    - add value in list.blade {value="{{ $request->role }}"}
    - add input field and button
    - add error => if search data was not found
@@ -187,14 +187,26 @@
 
 
 #twentysix => Adding roles to a user
-26 - add button for Add User in list.blade
+27 - add button for Add User in list.blade
    - add route for UserAdd
    - create file for add.blade in =>  users
    - copy pages of horizontal section
 
 #twentyseven => Adding roles to a user store data in Database
-27 - create route for store user
+28 - create route for store user
    - logic in controller -> check data validate (dd ($) | echo "" ;die();)
-   
+
+
+#twentyeight => Send Verification Email to Registered Users
+29 - Call mail import and str
+   - create logic and validate the token in the AdminController
+   - create RegisteredMail and logic under the mail folder
+   - Use the same variable name in the controller in the registeredMail file
+   - create registeredMail.blade and create logic
+
+
+
+
+
 
 

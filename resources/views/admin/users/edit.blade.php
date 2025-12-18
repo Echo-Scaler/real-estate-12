@@ -1,4 +1,4 @@
-@extends('admin.admin_dashboard')
+{{-- @extends('admin.admin_dashboard')
 @section('admin')
 <div class="page-content">
     @include('_message')
@@ -139,4 +139,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
