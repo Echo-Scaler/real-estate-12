@@ -177,11 +177,19 @@
    - add input field and button
    - add create user button
 
-#twentlyfive => Search and Filter Form with HTML 2
+#twentyfive => Search and Filter Form with HTML 2
 25 - add new logic in AdminController
    - add value in list.blade {value="{{ $request->role }}"}
    - add input field and button
    - add error => if search data was not found
    - Change loop system - foreach to forelse => User for search function
    - add create user button => not add
+
+
+#twentysix => Adding roles to a user
+26 - add button for Add User in list.blade
+   - add route for UserAdd
+   - create file for add.blade in =>  users
+   - copy pages of horizontal section
+
 

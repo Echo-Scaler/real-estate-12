@@ -1,5 +1,4 @@
 @extends('admin.admin_dashboard')
-
 @section('admin')
     <div class="page-content">
         <nav class="page-breadcrumb">
@@ -71,7 +70,18 @@
             <div class="col-lg-12 stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center ">
                         <h4 class="card-title">Users List</h4>
+                        {{-- Add User Button --}}
+                        <div class="d-flex align-items-center">
+                            <a href="{{ url('admin/users/add') }}" class="btn btn-success">Add User</a>
+                            {{-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button> --}}
+                        </div>
+                    </div>
+
+
+
+                        {{-- End Add User Button --}}
 
                         <div class="table-responsive pt-3">
                             <table class="table table-bordered">

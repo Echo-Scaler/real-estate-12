@@ -31,10 +31,12 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('admin/profile',[AdminController::class,'AdminProfile'])->name('admin.profile');
     Route::post('admin_profile/update',[AdminController::class,'AdminProfileUpdate'])->name('admin_profile_update');
 
-    
+
     //users show table
     Route::get('admin/users',[AdminController::class,'AdminUsers'])->name('admin.users');
     Route::get('admin/users/view/{id}',[AdminController::class,'AdminUsersView'])->name('admin.users.view');
+    Route::get('admin/users/add',[AdminController::class,'AdminUsersAdd'])->name('admin.users.add');
+    Route::post('admin/users/add_post',[AdminController::class,'AdminUsersAddPost'])->name('admin.users.add_post');
     // Route::get('admin/users/list',[AdminController::class,'AdminUsersList'])->name('admin.users.list');
     // Route::post('admin/users/list',[AdminController::class,'AdminUsersListPost'])->name('admin.users.list.post');
     // for view single record
