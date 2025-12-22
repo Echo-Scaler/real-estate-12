@@ -204,8 +204,14 @@
    - Use the same variable name in the controller in the registeredMail file
    - create registeredMail.blade and create logic
 
-
-
+#twentynine => end Verification Email to Registered Users Password set
+30 - create route for Password token check
+   - create controllr logic for password Token
+   - create new file in request folder for validation
+   - create new post route for password post token
+   - create controller new logic for user_set_up_post
+   - create UI for input fields
+   #['url' => url('set_new_password/'.$user->remember_token)] => check this token link
 
 
 

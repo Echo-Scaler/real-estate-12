@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str as SupportStr;
 use App\Mail\RegisteredMail;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ResetPassword;
 use Illuminate\Support\Str;
 
 class AdminController extends Controller
@@ -22,7 +23,7 @@ class AdminController extends Controller
             ->get();
         $data['months'] = $user->pluck('month');
         $data['counts'] = $user->pluck('count');
-        return view('admin.index',$data);
+        return view('admin.index', $data);
         // bar char montly users
     }
 
@@ -150,9 +151,7 @@ class AdminController extends Controller
         // dd($user);
         $user->save();
 
-       Mail::to($user->email)->send(new RegisteredMail($user));
-
-
+        Mail::to($user->email)->send(new RegisteredMail($user));
 
         return redirect('admin/users')->with('success', 'Add Admin Users Successfully. . .');
     }
@@ -164,4 +163,30 @@ class AdminController extends Controller
     //     return view('admin.users.edit', compact('user'));
     // }
 
+    // Token Check
+    public function set_new_password($token)
+    {
+        // echo $token;
+        // die();
+        $data['token'] = $token;
+        return view('auth.reset_pass', $data);
+    }
+
+    public function set_new_password_post($token, ResetPassword $request)
+    {
+        $user = User::where('remember_token', $token)->first();
+        // dd($user);
+
+        if (!$user) {
+            abort(403);
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->remember_token = Str::random(50);
+        $user->status = 'active';
+        $user->save();
+
+        return redirect('admin/login')
+            ->with('success', 'New Password Set Successfully. You can now log in.');
+    }
 }
