@@ -189,4 +189,49 @@ class AdminController extends Controller
         return redirect('admin/login')
             ->with('success', 'New Password Set Successfully. You can now log in.');
     }
+
+    public function AdminUsersEdit(Request $request, $id)
+    {
+        // dd($id);
+        $data['getRecord'] = User::find($id);
+        return view('admin.users.edit', compact('data'));
+    }
+
+    public function AdminUsersUpdate(Request $request, $id)
+    {
+        // dd($request);
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'phone' => 'required|string|max:255',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'role' => 'required|in:admin,user,agent',
+            'status' => 'required|in:active,inactive',
+            'address' => 'required|string|max:255',
+            'about' => 'required|string',
+            'website' => 'required|string|max:255',
+        ]);
+
+        $user->name = trim($request->name);
+        $user->username = trim($request->username);
+        $user->email = trim($request->email);
+        $user->phone = trim($request->phone);
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photoName = SupportStr::random(30) . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('upload/admin_photo'), $photoName);
+            $user->photo = $photoName;
+        }
+        $user->role = trim($request->role);
+        $user->status = trim($request->status);
+        $user->address = trim($request->address);
+        $user->about   = trim($request->about);
+        $user->website = $request->website;
+        $user->save();
+
+        return redirect('admin/users')->with('success', 'Update Admin Users Successfully. . .');
+    }
 }

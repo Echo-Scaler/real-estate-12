@@ -213,6 +213,14 @@
    - create UI for input fields
    #['url' => url('set_new_password/'.$user->remember_token)] => check this token link
 
-
+#thirty => Edit and Update data into Database
+31 - add edit icon in users/list.blade
+　　- create route for edit user
+   - create controller logic for edit user
+   - add require data in edit user controller (call model )
+   - create view file for edit user copy form add.blade from users folder
+   - add old value in the fields
+   - check and test
+   
 
 

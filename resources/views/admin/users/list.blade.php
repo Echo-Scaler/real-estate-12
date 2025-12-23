@@ -19,22 +19,23 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">ID</label>
-                                    <input type="text" class="form-control bg-transparent border-primary"  name="id"
+                                    <input type="text" class="form-control bg-transparent border-primary" name="id"
                                         placeholder="Search by ID" value="{{ $request->id }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Username</label>
-                                    <input type="text" class="form-control bg-transparent border-primary"  name="name"
+                                    <input type="text" class="form-control bg-transparent border-primary" name="name"
                                         placeholder="Search by name" value="{{ $request->name }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Email</label>
-                                    <input type="text" class="form-control bg-transparent border-primary"  name="email"
+                                    <input type="text" class="form-control bg-transparent border-primary" name="email"
                                         placeholder="Search by email" value="{{ $request->email }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Status</label>
-                                    <select class="form-control bg-transparent border-primary"  name="status" value="{{ $request->status }}">
+                                    <select class="form-control bg-transparent border-primary" name="status"
+                                        value="{{ $request->status }}">
                                         <option class="text-dark" value="">Select Status</option>
                                         <option class="text-dark" value="active">Active</option>
                                         <option class="text-dark" value="inactive">Inactive</option>
@@ -42,12 +43,13 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="search" class="sr-only">Website</label>
-                                    <input type="text" class="form-control bg-transparent border-primary"  name="website"
+                                    <input type="text" class="form-control bg-transparent border-primary" name="website"
                                         placeholder="Search by website" value="{{ $request->website }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="role" class="sr-only ">Role</label>
-                                    <select class="form-control bg-transparent border-primary"  name="role" value="{{ $request->role }}">
+                                    <select class="form-control bg-transparent border-primary" name="role"
+                                        value="{{ $request->role }}">
                                         <option class="text-dark" value="">Select Role</option>
                                         <option class="text-dark" value="admin">Admin</option>
                                         <option class="text-dark" value="user">User</option>
@@ -72,13 +74,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center ">
-                        <h4 class="card-title">Users List</h4>
-                        {{-- Add User Button --}}
-                        <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/users/add') }}" class="btn btn-success">Add User</a>
-                            {{-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button> --}}
+                            <h4 class="card-title">Users List</h4>
+                            {{-- Add User Button --}}
+                            <div class="d-flex align-items-center">
+                                <a href="{{ url('admin/users/add') }}" class="btn btn-success">Add User</a>
+                                {{-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button> --}}
+                            </div>
                         </div>
-                    </div>
 
 
 
@@ -101,7 +103,7 @@
                                         <th>Role</th>
                                         <th>Status</th>
                                         <th>Created at</th>
-                                        <th>Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -143,13 +145,13 @@
                                                 @endif
                                             </td>
                                             <td>{{ $value->created_at }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <a href="{{ url('admin/users/edit/' . $value->id) }}"
                                                     class="btn btn-primary">Edit</a>
                                                 <a href="{{ url('admin/users/delete/' . $value->id) }}"
                                                     onclick="return confirm('Are you sure you want to delete this user?')"
                                                     class="btn btn-danger">Delete</a>
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 <a class="dropdown-item d-flex align-items-center"
                                                     href="{{ url('admin/users/view/' . $value->id) }}">
@@ -162,15 +164,29 @@
                                                     </svg>
                                                     <span class="">View</span></a>
 
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                    href="{{ url('admin/users/edit/' . $value->id) }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-edit-2 icon-sm me-2">
+                                                        <path d="M12 20h9"></path>
+                                                        <path d="M18 2l4 4-9 9-4-4 9-9z"></path>
+                                                        <path d="M14 6l3-3a2 2 0 012.828 2.828L14 6z"></path>
+                                                    </svg>
+
+                                                    <span class="">Edit</span></a>
+
                                             </td>
                                         </tr>
                                         {{-- check if no records found --}}
-                                        @empty
+                                    @empty
                                         <tr>
-                                            <td colspan="100%" class="text-center bg-danger text-white fs-5">No records found</td>
+                                            <td colspan="100%" class="text-center bg-danger text-white fs-5">No records
+                                                found</td>
                                         </tr>
-                                        @endforelse
-                            {{-- change for each foresle loop for search error message --}}
+                                    @endforelse
+                                    {{-- change for each foresle loop for search error message --}}
                                 </tbody>
                             </table>
 
