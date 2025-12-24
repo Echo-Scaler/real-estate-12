@@ -90,7 +90,14 @@ class AdminController extends Controller
     public function AdminUsers(Request $request)
     {
         // $data['getRecord'] = User::getRecord(); => first list conditions
+        // Admin, User, Agent, Active, In Active count numbers
         $data['getRecord'] = User::getRecord($request);  //search form conditions
+        $data['TotalAdmin'] = User::where('role','=', 'admin')->where('role','=', 'admin')->count();
+        $data['TotalUser'] = User::where('role','=', 'user')->where('role','=', 'user')->count();
+        $data['TotalAgent'] = User::where('role','=', 'agent')->where('role','=', 'agent')->count();
+        $data['TotalActive'] = User::where('status','=', 'active')->count();
+        $data['TotalInActive'] = User::where('status','=', 'inactive')->count();
+
         $data['request'] = $request;
         // return view('admin.users', $data);
         return view('admin.users.list', $data);

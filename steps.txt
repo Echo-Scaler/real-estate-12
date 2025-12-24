@@ -229,4 +229,8 @@
    - create logic in AdminController for softdelete
    - add new column for softdelete (is_delete) 0 is NO Delete | 1 is Yes Delete
    - add query logic in user.php =>  $return = $return->where('is_deleted', '=', 0);
+
+#thirty-two => How to Count Records/Collection in Laravel 11
+33 - add link button for each items counts (a tag link) in the list.blade
+   - create logic in the AdminController for related count numbers
    

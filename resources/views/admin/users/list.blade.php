@@ -7,6 +7,23 @@
                 <li class="breadcrumb-item"><a href="#">Users</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Users List</li>
             </ol>
+            {{-- Admin, User, Agent, Active, In Active count numbers --}}
+            <div class="d-flex align-items-center">
+                <a href="{{ url('admin/users/add') }}" class="btn btn-warning btn-sm">{{ $TotalAdmin }} - Admin</a>
+                &nbsp;&nbsp;
+                <a href="{{ url('admin/users/add') }}" class="btn btn-primary btn-sm">{{ $TotalUser }} - User</a>
+                &nbsp;&nbsp;
+                <a href="{{ url('admin/users/add') }}" class="btn btn-info btn-sm">{{ $TotalAgent }} - Agent</a>
+                &nbsp;&nbsp;
+                <a href="{{ url('admin/users/add') }}" class="btn btn-success btn-sm">{{ $TotalActive }} - Active</a>
+                &nbsp;&nbsp;
+                <a href="{{ url('admin/users/add') }}" class="btn btn-danger btn-sm">{{ $TotalInActive }} - In Active</a>
+                &nbsp;&nbsp;
+                <a href="{{ url('admin/users/add') }}" class="btn btn-light btn-sm">{{ $TotalUser + $TotalAgent }} - Total
+                    Users</a>
+
+            </div>
+
         </nav>
         <br>
         <div class="row">
@@ -178,7 +195,8 @@
                                                     <span class="">Edit</span>
                                                 </a>
                                                 <a class="dropdown-item d-flex align-items-center"
-                                                    href="{{ url('admin/users/delete/' . $value->id) }}" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                    href="{{ url('admin/users/delete/' . $value->id) }}"
+                                                    onclick="return confirm('Are you sure you want to delete this user?')">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
