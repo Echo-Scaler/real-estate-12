@@ -23,7 +23,7 @@
 
             {{-- Add Role side bar  --}}
             <li class="nav-item nav-category">Role</li>
-            <li class="nav-item">
+            <li class="nav-item @if(Request::segment(2) == 'users') active @endif">
                 {{-- add dashboard route --}}
                 <a href="{{ url('admin/users') }}" class="nav-link">
                     <i class="link-icon" data-feather="user"></i>

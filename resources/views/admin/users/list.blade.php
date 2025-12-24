@@ -175,7 +175,23 @@
                                                         <path d="M14 6l3-3a2 2 0 012.828 2.828L14 6z"></path>
                                                     </svg>
 
-                                                    <span class="">Edit</span></a>
+                                                    <span class="">Edit</span>
+                                                </a>
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                    href="{{ url('admin/users/delete/' . $value->id) }}" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-trash-2 icon-sm me-2">
+                                                        <path d="M3 6h18"></path>
+                                                        <path d="M8 6v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6"></path>
+                                                        <path d="M10 6V4a2 2 0 0 1 4 0v2"></path>
+                                                    </svg>
+
+                                                    <span>Delete</span>
+                                                </a>
+
+
 
                                             </td>
                                         </tr>

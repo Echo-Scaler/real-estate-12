@@ -234,4 +234,17 @@ class AdminController extends Controller
 
         return redirect('admin/users')->with('success', 'Update Admin Users Successfully. . .');
     }
+    public function AdminUsersDelete($id, Request $request)
+    {
+        // dd($id);
+        $userSoftDelete = User::find($id);
+        // Use Laravel's built-in soft delete instead of custom column
+        $userSoftDelete->is_deleted = 1;
+        $userSoftDelete->save();
+
+        return redirect('admin/users')->with('success', 'Soft Delete Admin Users Successfully. . .');
+
+        // return redirect()->back()->with('success', 'Admin Users Deleted Successfully. . .');
+    }
+
 }

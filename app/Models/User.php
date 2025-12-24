@@ -60,7 +60,9 @@ class User extends Authenticatable
     static public function getRecord($request)
     {
         $return = self::select('users.*');
-
+                        // Soft delete condition
+        $return = $return->where('is_deleted', '=', 0);
+                        
         //Search start
         if (!empty($request->get('id'))) {
             $return = $return->where('id', '=', $request->get('id'));

@@ -39,6 +39,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('admin/users/add', [AdminController::class, 'AdminUsersAddStore'])->name('admin.users.add');
     Route::get('admin/users/edit/{id}', [AdminController::class, 'AdminUsersEdit'])->name('admin.users.edit');
     Route::put('admin/users/update/{id}', [AdminController::class, 'AdminUsersUpdate'])->name('admin.users.update');
+    Route::get('admin/users/delete/{id}', [AdminController::class, 'AdminUsersDelete'])->name('admin.users.delete');
+
 
 
     //Email Controller

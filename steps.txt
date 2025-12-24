@@ -221,6 +221,12 @@
    - create view file for edit user copy form add.blade from users folder
    - add old value in the fields
    - check and test
+
+
+#thirty-one => Active class for menu items dynamically and Soft Delete
+32 - copy icons for Delete , add in the list.blade
+   - create route for delete
+   - create logic in AdminController for softdelete
+   - add new column for softdelete (is_delete) 0 is NO Delete | 1 is Yes Delete
+   - add query logic in user.php =>  $return = $return->where('is_deleted', '=', 0);
    
-
-

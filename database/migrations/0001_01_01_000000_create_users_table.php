@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
+            $table->boolean('is_deleted')->default(false); // Soft delete flag
+            $table->text('about')->nullable();
+            $table->string('website')->nullable();
             $table->enum('role', ['admin', 'agent','user'])->default('user'); // admin, agent, user
             $table->enum('status', ['active', 'inactive'])->default('active'); // active, inactive
             $table->rememberToken();
