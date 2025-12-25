@@ -9,17 +9,17 @@
             </ol>
             {{-- Admin, User, Agent, Active, In Active count numbers --}}
             <div class="d-flex align-items-center">
-                <a href="{{ url('admin/users/add') }}" class="btn btn-warning btn-sm">{{ $TotalAdmin }} - Admin</a>
+                <a href="" class="btn btn-warning btn-sm">{{ $TotalAdmin }} - Admin</a>
                 &nbsp;&nbsp;
-                <a href="{{ url('admin/users/add') }}" class="btn btn-primary btn-sm">{{ $TotalUser }} - User</a>
+                <a href="" class="btn btn-primary btn-sm">{{ $TotalUser }} - User</a>
                 &nbsp;&nbsp;
-                <a href="{{ url('admin/users/add') }}" class="btn btn-info btn-sm">{{ $TotalAgent }} - Agent</a>
+                <a href="" class="btn btn-info btn-sm">{{ $TotalAgent }} - Agent</a>
                 &nbsp;&nbsp;
-                <a href="{{ url('admin/users/add') }}" class="btn btn-success btn-sm">{{ $TotalActive }} - Active</a>
+                <a href="" class="btn btn-success btn-sm">{{ $TotalActive }} - Active</a>
                 &nbsp;&nbsp;
-                <a href="{{ url('admin/users/add') }}" class="btn btn-danger btn-sm">{{ $TotalInActive }} - In Active</a>
+                <a href="" class="btn btn-danger btn-sm">{{ $TotalInActive }} - In Active</a>
                 &nbsp;&nbsp;
-                <a href="{{ url('admin/users/add') }}" class="btn btn-light btn-sm">{{ $TotalUser + $TotalAgent }} - Total
+                <a href="" class="btn btn-light btn-sm">{{ $TotalUser + $TotalAgent }} - Total
                     Users</a>
 
             </div>
@@ -73,6 +73,39 @@
                                         <option class="text-dark" value="agent">Agent</option>
                                     </select>
                                 </div>
+
+                                <div class="col-sm-4">
+                                    <label for="search" class="form-label">Start Date</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control bg-transparent border-primary"
+                                            name="start_date" placeholder="Search by start date"
+                                            value="{{ $request->start_date }}">
+
+                                        <span class="input-group-text bg-transparent border-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="search" class="form-label">End Date</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control bg-transparent border-primary"
+                                            name="end_date" placeholder="Search by end date"
+                                            value="{{ $request->end_date }}">
+                                        <span class="input-group-text bg-transparent border-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <div class="d-flex justify-content-center gap-2 border-primary">
@@ -98,7 +131,6 @@
                                 {{-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button> --}}
                             </div>
                         </div>
-
 
 
                         {{-- End Add User Button --}}
@@ -161,7 +193,7 @@
                                                     <span class="badge bg-danger">{{ $value->status }}</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $value->created_at }}</td>
+                                            <td>{{ $value->created_at->format('Y-m-d') }}</td>
                                             {{-- <td>
                                                 <a href="{{ url('admin/users/edit/' . $value->id) }}"
                                                     class="btn btn-primary">Edit</a>

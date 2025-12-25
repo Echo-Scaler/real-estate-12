@@ -62,7 +62,7 @@ class User extends Authenticatable
         $return = self::select('users.*');
                         // Soft delete condition
         $return = $return->where('is_deleted', '=', 0);
-                        
+
         //Search start
         if (!empty($request->get('id'))) {
             $return = $return->where('id', '=', $request->get('id'));
@@ -82,6 +82,11 @@ class User extends Authenticatable
         if (!empty($request->get('role'))) {
             $return = $return->where('role', '=', $request->get('role'));
         }
+        if (!empty($request->get('start_date')) && !empty($request->get('end_date'))) {
+            $return = $return->where('created_at', '>=', $request->get('start_date'))
+                             ->where('created_at', '<=', $request->get('end_date'));
+        }
+
         //Search end
 
         $return = $return->orderBy('id', 'asc')
