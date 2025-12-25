@@ -254,4 +254,20 @@ class AdminController extends Controller
         // return redirect()->back()->with('success', 'Admin Users Deleted Successfully. . .');
     }
 
+
+    // Admin Users Change Status
+    public function AdminUsersChangeStatus(Request $request)
+{
+    // Find the user by the ID sent from the AJAX request
+    $user = User::find($request->user_id);
+
+    if($user) {
+        $user->status = $request->status_id;
+        $user->save();
+
+        return response()->json(['success' => true, 'message' => 'Status updated successfully']);
+    }
+
+    return response()->json(['success' => false, 'message' => 'User not found'], 404);
+}
 }

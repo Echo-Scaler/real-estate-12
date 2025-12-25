@@ -187,12 +187,22 @@
                                             {{-- <td>{{ $value->status }}</td> --}}
                                             {{-- check badge color of status --}}
                                             <td>
-                                                @if ($value->status == 'active')
+                                                {{-- @if ($value->status == 'active')
                                                     <span class="badge bg-success">{{ $value->status }}</span>
                                                 @else
                                                     <span class="badge bg-danger">{{ $value->status }}</span>
-                                                @endif
+                                                @endif --}}
+
+                                                <select class="form-control changeStatus" style="width:170px;"
+                                                    id="status_{{ $value->id }}">
+                                                    <option value="active"
+                                                        {{ $value->status == 'active' ? 'selected' : '' }}>Active</option>
+                                                    <option value="inactive"
+                                                        {{ $value->status == 'inactive' ? 'selected' : '' }}>Inactive
+                                                    </option>
+                                                </select>
                                             </td>
+
                                             <td>{{ $value->created_at->format('Y-m-d') }}</td>
                                             {{-- <td>
                                                 <a href="{{ url('admin/users/edit/' . $value->id) }}"
@@ -266,4 +276,39 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.changeStatus').change(function() {
+                var status_id = $(this).val();
+                var user_id = $(this).data('id'); // Gets the numeric ID from data-id attribute
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('admin.users.changeStatus') }}",
+                    data: {
+                        // Include the CSRF token to prevent "419 Page Expired" error
+                        _token: "{{ csrf_token() }}",
+                        status_id: status_id,
+                        user_id: user_id
+                    },
+                    dataType: 'JSON',
+                    success: function(data) {
+                        if (data.success) {
+                            alert(data.message);
+                            // No need to reload the whole page unless you want to refresh other data
+                            // window.location.reload();
+                        }
+                    },
+                    error: function(xhr) {
+                        console.error(xhr.responseText);
+                        alert('Error: Could not update status.');
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

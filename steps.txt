@@ -234,6 +234,14 @@
 33 - add link button for each items counts (a tag link) in the list.blade
    - create logic in the AdminController for related count numbers
 
+
 #thirty-three =>  Filter Search Date Range
 34 - create new search input box of date range in list.blade
-   - add logic in the user.php 
+   - add logic in the user.php
+
+
+#thirty-four =>  Updating a foreach loop for a user update
+???
+
+#thirty-four => Change value with drop-down
+35 -
