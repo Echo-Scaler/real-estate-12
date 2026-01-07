@@ -243,5 +243,9 @@
 #thirty-four =>  Updating a foreach loop for a user update
 ???
 
-#thirty-four => Change value with drop-down
-35 -
+#thirty-four => Change status value with drop-down
+35 - create new controller logic for status change in AdminController
+   - user/list.blade change the UI logic and create class and Id
+   - related js code create 
+
+

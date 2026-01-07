@@ -192,15 +192,15 @@
                                                 @else
                                                     <span class="badge bg-danger">{{ $value->status }}</span>
                                                 @endif --}}
-
+                                                <!-- status change by toggle  -->
                                                 <select class="form-control changeStatus" style="width:170px;"
-                                                    id="status_{{ $value->id }}">
+                                                    id="status_{{ $value->id }}" data-id="{{ $value->id }}">
                                                     <option value="active"
                                                         {{ $value->status == 'active' ? 'selected' : '' }}>Active</option>
                                                     <option value="inactive"
                                                         {{ $value->status == 'inactive' ? 'selected' : '' }}>Inactive
                                                     </option>
-                                                </select>
+                                                </select> 
                                             </td>
 
                                             <td>{{ $value->created_at->format('Y-m-d') }}</td>
