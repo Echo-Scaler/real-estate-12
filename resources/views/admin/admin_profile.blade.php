@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="position-relative">
                         <figure class="overflow-hidden mb-0 d-flex justify-content-center">
-                            <img src="https://via.placeholder.com/1560x370"class="rounded-top" alt="profile cover">
+                            <img src="https://via.placeholder.com/1560x370" class="rounded-top" alt="profile cover">
                         </figure>
                         <div
                             class="d-flex justify-content-between align-items-center position-absolute top-90 w-100 px-2 px-md-4 mt-n4">
@@ -69,8 +69,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                            data-feather="edit-2" class="icon-sm me-2"></i> <span
-                                            class="">Edit</span></a>
+                                            data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
                                     <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
                                             data-feather="git-branch" class="icon-sm me-2"></i> <span
                                             class="">Update</span></a>
@@ -133,7 +132,7 @@
             <!-- middle wrapper start -->
             <div class="col-md-8 col-xl-9 middle-wrapper">
                 <div class="row">
-                    {{-- card element height ကို တူညီအောင် stretch လုပ်  --}}
+                    {{-- card element height ကို တူညီအောင် stretch လုပ် --}}
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -142,7 +141,8 @@
                                 {{-- @if (Session::has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{Session::get('success')}}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
                                 @endif --}}
 
@@ -184,15 +184,16 @@
                                     <div class="mb-3">
                                         <label class="form-label">Profile Image</label>
                                         @if ($adminProfile->photo)
-                                            <img src="{{ asset('upload/admin_photo/' . $adminProfile->photo) }}"
-                                                alt="Profile Image" class="img-thumbnail" width="20%" height="10%">
+                                            <img src="{{ asset('upload/' . $adminProfile->photo) }}"
+                                                alt="Profile Image" class="img-thumbnail" width="20%" height="10%"
+                                                style="margin-bottom: 10px;">
                                         @endif
-                                        <input type="file" class="form-control" placeholder="Profile Image"
-                                            name="photo" />
+                                        <input type="file" class="form-control" placeholder="Profile Image" name="photo" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">About</label>
-                                        <textarea type="text" class="form-control" placeholder="About" name="about" rows="4">{{ $adminProfile->about }}</textarea>
+                                        <textarea type="text" class="form-control" placeholder="About" name="about"
+                                            rows="4">{{ $adminProfile->about }}</textarea>
                                     </div>
 
                                     <div class="mb-3">
@@ -219,150 +220,7 @@
                     </div>
                 </div>
             </div>
-            <!-- middle wrapper end -->
-            <!-- right wrapper start -->
-            {{-- <div class="d-none d-xl-block col-xl-3">
-                <div class="row">
-                    <div class="col-md-12 grid-margin">
-                        <div class="card rounded">
-                            <div class="card-body">
-                                <h6 class="card-title">latest photos</h6>
-                                <div class="row ms-0 me-0">
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-2">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-2">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-2">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-2">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-2">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-2">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-0">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-0">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="col-md-4 ps-1 pe-1">
-                                        <figure class="mb-0">
-                                            <img class="img-fluid rounded" src="https://via.placeholder.com/96x96"
-                                                alt="">
-                                        </figure>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 grid-margin">
-                        <div class="card rounded">
-                            <div class="card-body">
-                                <h6 class="card-title">suggestions for you</h6>
-                                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                    <div class="d-flex align-items-center hover-pointer">
-                                        <img class="img-xs rounded-circle" src="https://via.placeholder.com/37x37"
-                                            alt="">
-                                        <div class="ms-2">
-                                            <p>Mike Popescu</p>
-                                            <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-icon border-0"><i data-feather="user-plus"></i></button>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                    <div class="d-flex align-items-center hover-pointer">
-                                        <img class="img-xs rounded-circle" src="https://via.placeholder.com/37x37"
-                                            alt="">
-                                        <div class="ms-2">
-                                            <p>Mike Popescu</p>
-                                            <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-icon border-0"><i data-feather="user-plus"></i></button>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                    <div class="d-flex align-items-center hover-pointer">
-                                        <img class="img-xs rounded-circle" src="https://via.placeholder.com/37x37"
-                                            alt="">
-                                        <div class="ms-2">
-                                            <p>Mike Popescu</p>
-                                            <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-icon border-0"><i data-feather="user-plus"></i></button>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                    <div class="d-flex align-items-center hover-pointer">
-                                        <img class="img-xs rounded-circle" src="https://via.placeholder.com/37x37"
-                                            alt="">
-                                        <div class="ms-2">
-                                            <p>Mike Popescu</p>
-                                            <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-icon border-0"><i data-feather="user-plus"></i></button>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                    <div class="d-flex align-items-center hover-pointer">
-                                        <img class="img-xs rounded-circle" src="https://via.placeholder.com/37x37"
-                                            alt="">
-                                        <div class="ms-2">
-                                            <p>Mike Popescu</p>
-                                            <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-icon border-0"><i data-feather="user-plus"></i></button>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex align-items-center hover-pointer">
-                                        <img class="img-xs rounded-circle" src="https://via.placeholder.com/37x37"
-                                            alt="">
-                                        <div class="ms-2">
-                                            <p>Mike Popescu</p>
-                                            <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-icon border-0"><i data-feather="user-plus"></i></button>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            <!-- right wrapper end -->
         </div>
 
     </div>

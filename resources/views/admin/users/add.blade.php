@@ -5,7 +5,7 @@
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ url('admin/users') }}">User</a>
+                    <a href="{{ route('admin.users') }}">User</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     Add User
@@ -22,101 +22,96 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
-                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
+                                <label for="name" class="col-sm-3 col-form-label">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="name" placeholder="Full Name"
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="Full Name"
                                         required />
-                                    <span class="text-danger">@error('name'){{ $message }}@enderror</span>
+                                    @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">UserName</label>
+                                <label for="username" class="col-sm-3 col-form-label">UserName</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="username" placeholder="UserName" />
-                                    <span class="text-danger">@error('username'){{ $message }}@enderror</span>
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" placeholder="UserName" />
+                                    @error('username') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
+                                <label for="email" class="col-sm-3 col-form-label">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" name="email" autocomplete="off"
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" autocomplete="off"
                                         placeholder="Email" required  />
-                                    <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+                                    @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Phone</label>
+                                <label for="phone" class="col-sm-3 col-form-label">Phone</label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="phone" placeholder="Mobile number"
+                                    <input type="number" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Mobile number"
                                         required />
-                                    <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
+                                    @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Photo</label>
+                                <label for="photo" class="col-sm-3 col-form-label">Photo</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" name="photo" />
-                                    <span class="text-danger">@error('photo'){{ $message }}@enderror</span>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Website</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="website" placeholder="Website" />
-                                    <span class="text-danger">@error('website'){{ $message }}@enderror</span>
+                                    <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" />
+                                    @error('photo') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Address</label>
+                                <label for="website" class="col-sm-3 col-form-label">Website</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="address" placeholder="Address" />
-                                    <span class="text-danger">@error('address'){{ $message }}@enderror</span>
+                                    <input type="text" class="form-control @error('website') is-invalid @enderror" id="website" name="website" value="{{ old('website') }}" placeholder="Website" />
+                                    @error('website') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Role</label>
+                                <label for="address" class="col-sm-3 col-form-label">Address</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="role" required>
+                                    <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}" placeholder="Address" />
+                                    @error('address') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="role" class="col-sm-3 col-form-label">Role</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control @error('role') is-invalid @enderror" id="role" name="role" required>
                                         <option value="">Select Role</option>
-                                        <option value="user">User</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="agent">Agent</option>
+                                        <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                        <option value="agent" {{ old('role') == 'agent' ? 'selected' : '' }}>Agent</option>
                                     </select>
-                                    <span class="text-danger">@error('role'){{ $message }}@enderror</span>
+                                    @error('role') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Status</label>
+                                <label for="status" class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="status" required>
+                                    <select class="form-control @error('status') is-invalid @enderror" id="status" name="status" required>
                                         <option value="">Select Status</option>
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
+                                        <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
+                                        <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                                     </select>
-                                    <span class="text-danger">@error('status'){{ $message }}@enderror</span>
+                                    @error('status') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">About</label>
+                                <label for="about" class="col-sm-3 col-form-label">About</label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" name="about" id="" cols="30" rows="10" placeholder="About"></textarea>
-                                    <span class="text-danger">@error('about'){{ $message }}@enderror</span>
+                                    <textarea class="form-control @error('about') is-invalid @enderror" name="about" id="about" cols="30" rows="10" placeholder="About">{{ old('about') }}</textarea>
+                                    @error('about') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
-
-                            <button type="submit" class="btn btn-primary me-2">
-                                Submit
-                            </button>
-                            <a href="{{ route('admin.users') }}" class="btn btn-secondary">
-                                Back
-                            </a>
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <a href="{{ route('admin.users') }}" class="btn btn-secondary">Back</a>
                         </form>
                     </div>
                 </div>

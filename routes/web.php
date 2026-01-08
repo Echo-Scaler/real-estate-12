@@ -41,7 +41,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('admin/users/update/{id}', [AdminController::class, 'AdminUsersUpdate'])->name('admin.users.update');
     Route::get('admin/users/delete/{id}', [AdminController::class, 'AdminUsersDelete'])->name('admin.users.delete');
     Route::post('admin/users/changeStatus', [AdminController::class, 'AdminUsersChangeStatus'])->name('admin.users.changeStatus');
-
+    Route::get('admin/my_profile', [AdminController::class, 'AdminMyProfile'])->name('admin.my_profile');
+    Route::post('admin/my_profile/update', [AdminController::class, 'AdminMyProfileUpdate'])->name('admin.my_profile_update');
 
 
     //Email Controller

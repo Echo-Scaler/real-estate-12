@@ -54,6 +54,7 @@ class AdminController extends Controller
     {
         $user = request()->validate([
             'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . Auth::user()->id,
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
             'phone' => 'required|string|max:255',
             'password' => 'nullable|string|min:8|confirmed',
@@ -65,6 +66,7 @@ class AdminController extends Controller
         // dd($request->all());
         $user = User::find(Auth::user()->id);
         $user->name = trim($request->name);
+        $user->username = trim($request->username);
         $user->email = trim($request->email);
         $user->phone = trim($request->phone);
         if ($request->password) {
@@ -77,7 +79,7 @@ class AdminController extends Controller
             $user->photo = $photoName;
         }
         $user->address = trim($request->address);
-        $user->about   = trim($request->about);
+        $user->about = trim($request->about);
         $user->website = $request->website;
         $user->save();
 
@@ -92,11 +94,11 @@ class AdminController extends Controller
         // $data['getRecord'] = User::getRecord(); => first list conditions
         // Admin, User, Agent, Active, In Active count numbers
         $data['getRecord'] = User::getRecord($request);  //search form conditions
-        $data['TotalAdmin'] = User::where('role','=', 'admin')->where('role','=', 'admin')->count();
-        $data['TotalUser'] = User::where('role','=', 'user')->where('role','=', 'user')->count();
-        $data['TotalAgent'] = User::where('role','=', 'agent')->where('role','=', 'agent')->count();
-        $data['TotalActive'] = User::where('status','=', 'active')->count();
-        $data['TotalInActive'] = User::where('status','=', 'inactive')->count();
+        $data['TotalAdmin'] = User::where('role', '=', 'admin')->where('role', '=', 'admin')->count();
+        $data['TotalUser'] = User::where('role', '=', 'user')->where('role', '=', 'user')->count();
+        $data['TotalAgent'] = User::where('role', '=', 'agent')->where('role', '=', 'agent')->count();
+        $data['TotalActive'] = User::where('status', '=', 'active')->count();
+        $data['TotalInActive'] = User::where('status', '=', 'inactive')->count();
 
         $data['request'] = $request;
         // return view('admin.users', $data);
@@ -151,7 +153,7 @@ class AdminController extends Controller
         $user->role = trim($request->role);
         $user->status = trim($request->status);
         $user->address = trim($request->address);
-        $user->about   = trim($request->about);
+        $user->about = trim($request->about);
         $user->website = $request->website;
 
         $user->remember_token = Str::random(50);
@@ -235,7 +237,7 @@ class AdminController extends Controller
         $user->role = trim($request->role);
         $user->status = trim($request->status);
         $user->address = trim($request->address);
-        $user->about   = trim($request->about);
+        $user->about = trim($request->about);
         $user->website = $request->website;
         $user->save();
 
@@ -257,17 +259,50 @@ class AdminController extends Controller
 
     // Admin Users Change Status
     public function AdminUsersChangeStatus(Request $request)
-{
-    // Find the user by the ID sent from the AJAX request
-    $user = User::find($request->user_id);
+    {
+        // Find the user by the ID sent from the AJAX request
+        $user = User::find($request->user_id);
 
-    if($user) {
-        $user->status = $request->status_id;
-        $user->save();
+        if ($user) {
+            $user->status = $request->status_id;
+            $user->save();
 
-        return response()->json(['success' => true, 'message' => 'Status updated successfully']);
+            return response()->json(['success' => true, 'message' => 'Status updated successfully']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'User not found'], 404);
     }
 
-    return response()->json(['success' => false, 'message' => 'User not found'], 404);
-}
+    public function AdminMyProfile(Request $request)
+    {
+        $data['getRecord'] = User::find($request->user_id);
+        return view('admin.my_profile', compact('data'));
+    }
+
+    public function AdminMyProfileUpdate(Request $request)
+    {
+        // dd($request->all());
+        $user = request()->validate([
+           'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
+        ]);
+        $user = User::find(Auth::user()->id);
+        $user->name = trim($request->name);
+        $user->email = trim($request->email);
+        if($request->password){
+             $user->password = Hash::make($request->password);
+        }
+
+        if(!empty($request->hasfile('photo')))
+        {
+            $file = $request->file('photo');
+            $randomStr = Str::random(30);
+            $filename  = $randomStr.'.'.$file->getClientOriginalExtension();
+            $file->move('upload/',$filename);
+            $user->photo = $filename;
+        }
+
+        $user->save();
+
+        return redirect('admin/my_profile')->with('success','My Account Update!');
+    }
 }

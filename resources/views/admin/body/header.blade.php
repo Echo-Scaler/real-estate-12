@@ -14,8 +14,8 @@
         <ul class="navbar-nav">
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i data-feather="grid"></i>
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="appsDropdown">
@@ -216,8 +216,8 @@
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{-- Add DB photo --}}
                     @if (Auth::user()->photo)
-                        <img src="{{ asset('upload/admin_photo/' . Auth::user()->photo) }}" alt="Profile Image"
-                            class="img-thumbnail rounded-circle" width="10%" height="10%">
+                        <img src="{{ asset('upload/' . Auth::user()->photo) }}" alt="Profile Image"
+                            class="img-thumbnail rounded-circle" width="30%" height="30%">
                     @endif
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
@@ -225,8 +225,8 @@
                         <div class="mb-3">
                             {{-- Add DB photo --}}
                             @if (Auth::user()->photo)
-                                <img class="wd-80 ht-80 rounded-circle" src="{{ asset('upload/admin_photo/' . Auth::user()->photo) }}"
-                                    alt="">
+                                <img class="wd-80 ht-80 rounded-circle"
+                                    src="{{ asset('upload/' . Auth::user()->photo) }}" alt="">
                             @endif
                         </div>
                         {{-- add user dynamic info --}}
@@ -244,7 +244,7 @@
                             </a>
                         </li>
                         <li class="dropdown-item py-2">
-                            <a href="javascript:;" class="text-body ms-0">
+                            <a href="{{ url('admin/my_profile') }}" class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="edit"></i>
                                 <span>Edit Profile</span>
                             </a>

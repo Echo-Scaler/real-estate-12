@@ -60,7 +60,7 @@ class User extends Authenticatable
     static public function getRecord($request)
     {
         $return = self::select('users.*');
-                        // Soft delete condition
+        // Soft delete condition
         $return = $return->where('is_deleted', '=', 0);
 
         //Search start
@@ -69,6 +69,9 @@ class User extends Authenticatable
         }
         if (!empty($request->get('name'))) {
             $return = $return->where('name', 'like', '%' . $request->get('name') . '%');
+        }
+        if (!empty($request->get('username'))) {
+            $return = $return->where('username', 'like', '%' . $request->get('username') . '%');
         }
         if (!empty($request->get('email'))) {
             $return = $return->where('email', 'like', '%' . $request->get('email') . '%');
@@ -84,7 +87,7 @@ class User extends Authenticatable
         }
         if (!empty($request->get('start_date')) && !empty($request->get('end_date'))) {
             $return = $return->where('created_at', '>=', $request->get('start_date'))
-                             ->where('created_at', '<=', $request->get('end_date'));
+                ->where('created_at', '<=', $request->get('end_date'));
         }
 
         //Search end
