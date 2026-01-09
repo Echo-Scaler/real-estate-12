@@ -5,6 +5,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserTimeController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Mime\Email;
 
@@ -53,6 +54,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/email_sent/read/{id}', [EmailController::class, 'EmailSentRead'])->name('admin.email_sent.read');
     Route::get('admin/email/read_delete/{id}', [EmailController::class, 'admin_email_read_delete'])->name('admin.email.read_delete');
 });
+
+    // user week start
+    Route::get('admin/week', [UserTimeController::class, 'week_list'])->name('admin.week');
+    Route::get('admin/week/add', [UserTimeController::class, 'week_add'])->name('admin.week.add');
+    Route::post('admin/week/add', [UserTimeController::class, 'week_add_store'])->name('admin.week.add.store');
+    Route::get('admin/week/edit/{id}', [UserTimeController::class, 'week_edit'])->name('admin.week.edit');
+    Route::put('admin/week/update/{id}', [UserTimeController::class, 'week_update'])->name('admin.week.update');
+    Route::get('admin/week/delete/{id}', [UserTimeController::class, 'week_delete'])->name('admin.week.delete');
+
+// // week time start
+
+
 
 //Agent
 Route::middleware(['auth', 'role:agent'])->group(function () {

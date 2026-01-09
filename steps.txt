@@ -248,4 +248,17 @@
    - user/list.blade change the UI logic and create class and Id
    - related js code create 
 
+#thirty-six =>  Updating User Profiles in Laravel
+36 - create url in body/header.blade.php
+   - create route for edit/my_profile
+   - create logic for AddmyProfile and UpdateMyProfile in AdminController
+   - validate the Email in UpdateMyProfile => AdminController
+   - copy for UI from the users/add.blade - remove unrequire parts of field
+   - 
 
+#thirty-seven =>   Agent Dashboard Layouts Set
+37 - skip
+38 - skip 
+39 - skip
+
+#Fourty => 
